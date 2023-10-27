@@ -46,7 +46,7 @@ const Register = () => {
           onSubmit={handleSubmit}
           >
 
-            <h2 className='text-4xl text-white font-bold text-center'>SING IN</h2>
+            <h2 className='text-4xl text-white font-bold text-center'>SIGN IN</h2>
 
             <div className='flex flex-col text-gray-400 py-2'>
               <label>User Name</label>
@@ -95,6 +95,7 @@ const Register = () => {
             <div >
               <p className='text-white mt-1'>Already a member <Link className='text-gray-200 underline' to ="/login">Sign up</Link></p>
             </div>
+
 
             <button type='submit'
              className='w-full my-5 py-2 bg-teal-500  text-white font-medium rounded-md transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-teal-700 duration-300 ...'>
