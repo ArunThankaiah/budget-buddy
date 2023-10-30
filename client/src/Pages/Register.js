@@ -16,7 +16,7 @@ const Register = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault()
         const newUser = {name, phonenumber, email, password} ;
-
+        
        try{
         await axios.post("api/users/register", newUser)
         message.success("Successfuly Register")

@@ -1,15 +1,9 @@
 import React, { useEffect, useState} from 'react'
-//ant design 
 import {Form, Input, Modal, Select, Table, message, DatePicker} from 'antd'
-//ant design icons
 import {UnorderedListOutlined, AreaChartOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons'
-//Header
 import Layout from '../Components/Layout';
-//Date formation
 import moment from 'moment';
-//axios
 import axios from 'axios'
-//Diagram import
 import Analytics from '../Components/Analytics';
 
 
