@@ -5,12 +5,14 @@ const userSchema = mongoose.Schema(
         name : {
             type : String,
             require: [true, 'User name require'],
-            uppercase: true
+            uppercase: true,
+           
         },
         phonenumber: {
             type: Number,
             require: [true, "Phone number require"],
             min: 10,
+           
         },
         email: {
             type: String,

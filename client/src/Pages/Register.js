@@ -12,9 +12,11 @@ const Register = () => {
     const [phonenumber, setPhonenumber] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState({})
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
+       if (validateForm()){
         const newUser = {name, phonenumber, email, password} ;
         
        try{
@@ -25,6 +27,47 @@ const Register = () => {
        }catch(error){
         message.error("Invalid data please check data again")
        }
+       }
+        
+    }
+    const validateForm  = ()=>{
+      let isValid = true
+      const newError = {}
+
+      if(name.trim()=== ""){
+        newError.name = "Name is required"
+        isValid = false
+      }
+      else if(name.length <4 || name.length>10){
+        newError.name = "Enter a valid name"
+        isValid = false
+      }
+      if(email.trim() === ""){
+        newError.email = "Email is required"
+        isValid = false
+      }else if (!/^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/.test(email)){
+        newError.email = "Email is invalide"
+        isValid = false
+      }
+      if(phonenumber.trim()=== ""){
+        newError.phonenumber = "Phonenumber is requied"
+        isValid = false
+      }
+      else if(phonenumber.length <10 ){
+        newError.phonenumber = "Enter your 10 digit phone number"
+        isValid = false
+      }
+      
+      if(password.trim()=== ""){
+        newError.password = "Password is requied"
+        isValid = false
+      }
+      else if (password.length <6 || password.length >15){
+        newError.password = "Enter a strong password "
+        isValid = false
+      }
+      setError(newError)
+      return isValid
     }
 
     useEffect(()=>{
@@ -58,6 +101,7 @@ const Register = () => {
               value={name}
               
               />
+               {error.name && <p className='text-red-400 text-sm mt-2'>{error.name}</p>}
             </div>
 
             <div className='flex flex-col text-gray-400 py-2'>
@@ -69,6 +113,7 @@ const Register = () => {
                onChange={(e)=>setPhonenumber(e.target.value)}
                value={phonenumber}
                />
+                {error.phonenumber && <p className='text-red-400 text-sm mt-2'>{error.phonenumber}</p>}
             </div>
 
             <div className='flex flex-col text-gray-400 py-2'>
@@ -80,6 +125,7 @@ const Register = () => {
               value={email}
               
               />
+               {error.email && <p className='text-red-400 text-sm mt-2'>{error.email}</p>}
             </div>
 
             <div className='flex flex-col text-gray-400 py-2'>
@@ -91,9 +137,11 @@ const Register = () => {
                onChange={(e)=>setPassword(e.target.value)}
                value={password}
                />
+                {error.password && <p className='text-red-400 text-sm mt-2'>{error.password}</p>}
             </div>
             <div >
-              <p className='text-white mt-1'>Already a member <Link className='text-gray-200 underline' to ="/login">Sign up</Link></p>
+              <p className='text-white mt-1'>Already a member <Link className='text-gray-200 no-underline' to ="/login"><span className='text-blue-400 no-underline'>Sign up</span></Link></p>
+              
             </div>
 
 

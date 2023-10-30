@@ -67,7 +67,7 @@ const Login = () => {
             </div>
 
             <div >
-              <p className='text-white mt-2'>Create a account <Link className='text-gray-200 underline ml-1' to ="/register">Sign in</Link></p>
+              <p className='text-white mt-2'>Create a account <Link className='text-gray-200 no-underline ml-1' to ="/register"><span className='text-blue-400'>Sign in</span></Link></p>
             </div>
 
             <button type='submit' className='w-full my-5 py-2 bg-teal-500 shadow-lg text-white font-medium rounded-md transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-teal-700 duration-300 ...'>Sing up</button>
