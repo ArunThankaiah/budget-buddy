@@ -67,6 +67,7 @@ const HomePage = () => {
             <EditOutlined
              className='mx-1 text-blue-600 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover: duration-300 ...'
              onClick={()=>{
+              //setEditTable([])
               setEditTable(record)
               setShowModal(true)
              }}
@@ -252,14 +253,16 @@ const handleDelete = async(record)=>{
           footer={false}
           >
            <Form 
-           layout='vertical' autoComplete="off" 
-           onFinish={handleSubmit} 
+           layout='vertical'
+           autoComplete="off" 
+           enableReinitialize
            initialValues={editTable}
+           onFinish={handleSubmit} 
            form={form}
           
            
            >
-
+           {console.log(editTable, "edit")}
             <Form.Item label='Amount' name='amount' rules={[{ required: true, message: 'Please input your amount!' }]}>
               <Input type='number'/>
             </Form.Item>
