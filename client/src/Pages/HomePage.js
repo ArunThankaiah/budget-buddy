@@ -98,11 +98,15 @@ const HomePage = () => {
           selectDate,
           customDate,
           type, 
-          category
+          category,
+          
+          
           
         });
-        setAllTransaction(res.data);
-        
+        setAllTransaction(res.data)
+       
+       
+       
       }catch(error){
         console.log(error);
         message.error("Fech Issue with transaction")
@@ -110,9 +114,20 @@ const HomePage = () => {
     }
     
     getAllTransaction()
-  },[selectDate, customDate, type, category, setAllTransaction])
+  },[selectDate, customDate, type, category,])
 
- 
+    //Delete Transaction
+const handleDelete = async(record)=>{
+  try{
+    await axios.post("/api/transactions/delete-transaction",
+    {transactionId: record._id })
+    message.success("Transaction delete successfully")
+  }catch(error){
+    console.log(error);
+    message.error("Faild to delete")
+  }
+}
+
   //New transaction from handle submit
   const handleSubmit = async(values)=>{
     try{
@@ -130,8 +145,10 @@ const HomePage = () => {
         message.success("Transaction update successfully")
         
       }else{
-      await axios.post('/api/transactions/add-transaction',
-      {...values, userid: user._id});
+      await axios.post('/api/transactions/add-transaction',{
+      ...values,
+       userid: user._id
+      });
       message.success("Trasection added successfully",)
       }
       setShowModal(false)
@@ -144,17 +161,6 @@ const HomePage = () => {
     }
   
   }
-  //Delete Transaction
-const handleDelete = async(record)=>{
-  try{
-    await axios.post("/api/transactions/delete-transaction",
-    {transactionId: record._id })
-    message.success("Transaction delete successfully")
-  }catch(error){
-    console.log(error);
-    message.error("Faild to delete")
-  }
-}
 
   return (
     <>
@@ -243,13 +249,14 @@ const handleDelete = async(record)=>{
           title = {editTable ? "Edit Transaction" : "Add Transaction"}
           open = {showModal}
           onCancel={()=>setShowModal(false)}
-          footer ={false}
+          footer={false}
           >
            <Form 
            layout='vertical' autoComplete="off" 
            onFinish={handleSubmit} 
            initialValues={editTable}
            form={form}
+          
            
            >
 

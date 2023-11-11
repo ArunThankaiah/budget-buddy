@@ -36,7 +36,7 @@ const editTransaction = async( req,res )=>{
           { _id: req.body.transacationId },
           req.body.payload
         );
-        res.status(200).send("Edit SUccessfully");
+        res.status(200).send("Edit Successfully");
       } catch (error) {
         console.log(error);
         res.status(500).json(error);
