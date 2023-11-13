@@ -115,7 +115,7 @@ const HomePage = () => {
     }
     
     getAllTransaction()
-  },[selectDate, customDate, type, category,])
+  },[selectDate, customDate, type, category,allTransaction])
 
     //Delete Transaction
 const handleDelete = async(record)=>{
@@ -261,7 +261,7 @@ const handleDelete = async(record)=>{
           
            
            >
-           {console.log(editTable, "edit")}
+           
             <Form.Item label='Amount' name='amount' rules={[{ required: true, message: 'Please input your amount!' }]}>
               <Input type='number'/>
             </Form.Item>
