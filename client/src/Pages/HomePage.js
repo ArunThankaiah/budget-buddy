@@ -255,7 +255,6 @@ const handleDelete = async(record)=>{
            <Form 
            layout='vertical'
            autoComplete="off" 
-           enableReinitialize
            initialValues={editTable}
            onFinish={handleSubmit} 
            form={form}
